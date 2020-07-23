@@ -1,8 +1,39 @@
 import React from 'react';
+import Image from 'react-bootstrap/Image';
+
 import DPauseButton from './DPauseButton'
+import ImageList from '../images/imageList.js';
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
+}
+
+const styles = {
+    imageDiv: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    textAndButtonDiv: {
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    image: {
+        paddingTop: 20,
+        textAlign: 'center',
+        alignItems: 'center',
+        resizeMode: 'contain',
+        maxWidth: "60%",
+    },
+    imageText: {
+        fontFamily: 'Monsterrat',
+        fontSize: 60,
+        fontWeight: 800,
+        fontStyle: 'italic',
+    }
 }
 
 class Diaporama extends React.Component {
@@ -11,7 +42,8 @@ class Diaporama extends React.Component {
         this.state = {
             seconds: 0,
             timeSwitch: getRandomInt(60),
-            isPaused: false
+            isPaused: false,
+            imageShown: this.getRandomImage()
         }
     }
 
@@ -26,23 +58,28 @@ class Diaporama extends React.Component {
         clearInterval(this.imageTimer);
     }
 
+    getRandomImage() {
+        return (ImageList[getRandomInt(ImageList.length - 1)]);
+    }
+
+    debugText() {
+        if (false)
+            return (<h1>Secondes: {this.state.seconds}, Target: {this.state.timeSwitch}</h1>);
+    }
+
     pauseDiaporama() {
         if (this.state.isPaused === false) {
             // Si l'utilisateur met pause
             // Alors on stoppe le timer
             this.setState((state) => ({
-                seconds: state.seconds,
-                timeSwitch: state.timeSwitch,
-                isPaused: true
+                isPaused: true,
             }));
             clearInterval(this.imageTimer);
         } else {
             // Si l'utilisateur continue
             // Alors on relance un timer
             this.setState((state) => ({
-                seconds: state.seconds,
-                timeSwitch: state.timeSwitch,
-                isPaused: false
+                isPaused: false,
             }));
             this.imageTimer = setInterval(
                 () => this.updateTime(),
@@ -56,8 +93,6 @@ class Diaporama extends React.Component {
         // On update les secondes
         this.setState((state) => ({
             seconds: state.seconds + 1,
-            timeSwitch: state.timeSwitch,
-            isPaused: state.isPaused
         }));
 
         // Si secondes équivaut a timeSwitch alors on change d'image
@@ -65,18 +100,21 @@ class Diaporama extends React.Component {
             this.setState({
                 seconds: 0,
                 timeSwitch: getRandomInt(60),
-                isPaused: false
+                imageShown: this.getRandomImage()
             });
-            alert("Changement d'image !");
             //Changer d'image ici
         }
     }
 
     render() {
         return (
-            <div>
-                <h1>Secondes: {this.state.seconds}, Target: {this.state.timeSwitch}</h1>
-                <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
+            <div style={styles.imageDiv}>
+            <Image src={this.state.imageShown.src} style={styles.image} fluid></Image>
+                <div style={styles.textAndButtonDiv}>
+                    <text style={styles.imageText}>{this.state.imageShown.name}</text>
+                    {this.debugText()}
+                    <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
+                </div>
             </div>
         );
     }
