@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'react-bootstrap/Image';
 
 import DPauseButton from './DPauseButton'
+import DModal from './DModal'
 import ImageList from '../images/imageList.js';
 
 
@@ -43,7 +44,8 @@ class Diaporama extends React.Component {
             seconds: 0,
             timeSwitch: getRandomInt(60),
             isPaused: false,
-            imageShown: this.getRandomImage()
+            imageShown: this.getRandomImage(),
+            showModal: false
         }
     }
 
@@ -60,6 +62,18 @@ class Diaporama extends React.Component {
 
     getRandomImage() {
         return (ImageList[getRandomInt(ImageList.length - 1)]);
+    }
+
+    showModal() {
+        this.setState({
+            showModal: true
+        });
+    }
+
+    hideModal() {
+        this.setState({
+            showModal: false
+        });
     }
 
     debugText() {
@@ -109,10 +123,11 @@ class Diaporama extends React.Component {
     render() {
         return (
             <div style={styles.imageDiv}>
-            <Image src={this.state.imageShown.src} style={styles.image} fluid></Image>
+            <Image src={this.state.imageShown.src} style={styles.image} onClick={() => this.showModal()} fluid></Image>
                 <div style={styles.textAndButtonDiv}>
                     <text style={styles.imageText}>{this.state.imageShown.name}</text>
                     {this.debugText()}
+                    <DModal showModal={this.state.showModal} hideModal={() => this.hideModal()} imageShown={this.state.imageShown} />
                     <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
                 </div>
             </div>
