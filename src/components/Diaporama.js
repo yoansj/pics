@@ -6,8 +6,8 @@ import DModal from './DModal'
 import ImageList from '../images/imageList.js';
 
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 const styles = {
@@ -42,7 +42,7 @@ class Diaporama extends React.Component {
         super(props);
         this.state = {
             seconds: 0,
-            timeSwitch: getRandomInt(60),
+            timeSwitch: getRndInteger(10, 60),
             isPaused: false,
             imageShown: this.getRandomImage(),
             showModal: false
@@ -61,7 +61,7 @@ class Diaporama extends React.Component {
     }
 
     getRandomImage() {
-        return (ImageList[getRandomInt(ImageList.length - 1)]);
+        return (ImageList[getRndInteger(0, ImageList.length - 1)]);
     }
 
     showModal() {
@@ -102,6 +102,15 @@ class Diaporama extends React.Component {
         }
     }
 
+    nextImage() {
+        this.setState({
+            seconds: 0,
+            timeSwitch: getRndInteger(10, 60),
+            imageShown: this.getRandomImage(),
+            showModal: false
+        });
+    }
+
     updateTime() {
 
         // On update les secondes
@@ -110,14 +119,8 @@ class Diaporama extends React.Component {
         }));
 
         // Si secondes équivaut a timeSwitch alors on change d'image
-        if (this.state.seconds === this.state.timeSwitch) {
-            this.setState({
-                seconds: 0,
-                timeSwitch: getRandomInt(60),
-                imageShown: this.getRandomImage()
-            });
-            //Changer d'image ici
-        }
+        if (this.state.seconds === this.state.timeSwitch)
+            this.nextImage();
     }
 
     render() {

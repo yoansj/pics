@@ -21,7 +21,6 @@ const ImageList = [
     {name: "Blue", src: "https://i.ibb.co/BZhVgcg/square.jpg", categories: [Categories.architecture]},
     {name: "Pink Sunset", src: "https://i.ibb.co/y6KnZfY/IMG-3878.jpg", categories: [Categories.paysage]},
     {name: "Red and White", src: "https://i.ibb.co/YpMytxS/light-painting.jpg", categories: [Categories.lightPainting]},
-    {name: "Redddd", src: "https://i.ibb.co/t2P43Mm/red.jpg", categories: [Categories.sneakers]}
 ]
 
 export default ImageList;
