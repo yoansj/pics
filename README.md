@@ -2,7 +2,7 @@
 
 ## Whats Pics
 
-Blabla blabla wip...
+[Blabla blabla wip...](https://yoansj.github.io/pics/)
 
 ## To-do list
 
