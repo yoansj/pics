@@ -6,7 +6,9 @@ const Categories = {
     paysage: {name: "paysage", style: "Paysage"},
     sneakers: {name: "sneakers", style: "Sneakers"},
     architecture: {name: "architecture", style: "Architecture"},
-    lightPainting: {name: "lightPainting", style: "Light Painting"}
+    lightPainting: {name: "lightPainting", style: "Light Painting"},
+    night: {name: "night", style: "Nuit"},
+    bw: {name: "blackAndWhite", style: "Noir et Blanc"},
 }
 
 // Liste des images
@@ -17,10 +19,16 @@ const Categories = {
 const ImageList = [
     {name: "Through my phone", src: "https://i.ibb.co/tYZ63VV/see-through-phone-ile-de-re.jpg", categories: [Categories.paysage, Categories.montage]},
     {name: "Red", src: "https://i.ibb.co/t2P43Mm/red.jpg", categories: [Categories.architecture]},
-    {name: "AJ3", src: "https://i.ibb.co/XD0JKbd/Jordan-2.jpg", categories: [Categories.sneakers]},
+    {name: "AJ3 I", src: "https://i.ibb.co/XD0JKbd/Jordan-2.jpg", categories: [Categories.sneakers]},
+    {name: "AJ3 II", src: "https://i.ibb.co/Mh4HmTJ/jay-jay.jpg", categories: [Categories.sneakers]},
+    {name: "Airmax x Lacoste", src: "https://i.ibb.co/YLyZ3cm/airmax-x-lacoste.jpg", categories: [Categories.sneakers]},
     {name: "Blue", src: "https://i.ibb.co/BZhVgcg/square.jpg", categories: [Categories.architecture]},
     {name: "Pink Sunset", src: "https://i.ibb.co/y6KnZfY/IMG-3878.jpg", categories: [Categories.paysage]},
-    {name: "Red and White", src: "https://i.ibb.co/YpMytxS/light-painting.jpg", categories: [Categories.lightPainting]},
+    {name: "Red and White", src: "https://i.ibb.co/YpMytxS/light-painting.jpg", categories: [Categories.lightPainting, Categories.night]},
+    {name: "City", src: "https://i.ibb.co/ysVHMvJ/city.jpg", categories: [Categories.night]},
+    {name: "Shades of Grey", src: "https://i.ibb.co/C57Fms3/b-w.jpg", categories: [Categories.bw, Categories.paysage]},
+    {name: "Blue Metro", src: "https://i.ibb.co/gT3sKPg/blue.jpg", categories: [Categories.night, Categories.architecture]},
+    {name: "The blocks", src: "https://i.ibb.co/Y0hFft2/another-blockview.jpg", categories: [Categories.architecture]},
 ]
 
 export default ImageList;

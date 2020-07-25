@@ -46,6 +46,7 @@ class Diaporama extends React.Component {
             timeSwitch: getRndInteger(10, 60),
             isPaused: false,
             imageShown: this.getRandomImage(),
+            lastImageShown: NaN,
             showModal: false,
             isImageLoaded: false,
             isImageFailLoaded: false
@@ -113,14 +114,22 @@ class Diaporama extends React.Component {
      * to show a new image to the user
      */
     nextImage() {
-        this.setState({
+        var newImage = this.getRandomImage();
+
+        console.log(this.state.lastImageShown);
+        while (newImage === this.state.imageShown || newImage === this.state.lastImageShown) {
+            newImage = this.getRandomImage();
+        }
+
+        this.setState((state) => ({
             seconds: 0,
             timeSwitch: getRndInteger(10, 60),
-            imageShown: this.getRandomImage(),
+            lastImageShown: state.imageShown,
+            imageShown: newImage,
             showModal: false,
             isImageLoaded: false,
             isImageFailLoaded: false
-        });
+        }));
     }
 
     /**
