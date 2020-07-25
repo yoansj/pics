@@ -9,7 +9,7 @@ Blabla blabla wip...
 Task | Status
 ---  | ---   |
 Show a loading icon when a image is being shown | :heavy_check_mark: (Working with some slight issues)
-Prevent the app to show the same image twice in a row or to show the previous image | :x:
+Prevent the app to show the same image twice in a row or to show the previous image | :heavy_check_mark:
 Make the modal when you click an image actually bigger | :x:
 Have a nice display for images categories | :x:
 (Maybe) Add images description | :x:
