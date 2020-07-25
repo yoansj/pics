@@ -3,6 +3,7 @@ import Image from 'react-bootstrap/Image';
 
 import DPauseButton from './DPauseButton'
 import DModal from './DModal'
+import DImageLoading from './DImageLoading'
 import ImageList from '../images/imageList.js';
 
 
@@ -45,7 +46,9 @@ class Diaporama extends React.Component {
             timeSwitch: getRndInteger(10, 60),
             isPaused: false,
             imageShown: this.getRandomImage(),
-            showModal: false
+            showModal: false,
+            isImageLoaded: false,
+            isImageFailLoaded: false
         }
     }
 
@@ -76,22 +79,25 @@ class Diaporama extends React.Component {
         });
     }
 
-    debugText() {
-        if (false)
-            return (<h1>Secondes: {this.state.seconds}, Target: {this.state.timeSwitch}</h1>);
+    setImageLoaded(bool) {
+        this.setState({
+            isImageLoaded: bool
+        });
+    }
+
+    setImageFailLoaded(bool) {
+        this.setState({
+            isImageFailLoaded: bool
+        });
     }
 
     pauseDiaporama() {
         if (this.state.isPaused === false) {
-            // Si l'utilisateur met pause
-            // Alors on stoppe le timer
             this.setState((state) => ({
                 isPaused: true,
             }));
             clearInterval(this.imageTimer);
         } else {
-            // Si l'utilisateur continue
-            // Alors on relance un timer
             this.setState((state) => ({
                 isPaused: false,
             }));
@@ -102,23 +108,32 @@ class Diaporama extends React.Component {
         }
     }
 
+    /**
+     * This method modifies the states of the Diaporama component
+     * to show a new image to the user
+     */
     nextImage() {
         this.setState({
             seconds: 0,
             timeSwitch: getRndInteger(10, 60),
             imageShown: this.getRandomImage(),
-            showModal: false
+            showModal: false,
+            isImageLoaded: false,
+            isImageFailLoaded: false
         });
     }
 
+    /**
+     * This method is called by the intervals (see pauseDiaporama())
+     * This method increases the seconds state and calls the nextImage() method
+     * when the seconds state is equal to the timeSwitch state
+     */
     updateTime() {
 
-        // On update les secondes
         this.setState((state) => ({
             seconds: state.seconds + 1,
         }));
 
-        // Si secondes équivaut a timeSwitch alors on change d'image
         if (this.state.seconds === this.state.timeSwitch)
             this.nextImage();
     }
@@ -126,10 +141,17 @@ class Diaporama extends React.Component {
     render() {
         return (
             <div style={styles.imageDiv}>
-            <Image src={this.state.imageShown.src} style={styles.image} onClick={() => this.showModal()} fluid></Image>
+                <Image
+                    src={this.state.imageShown.src}
+                    style={styles.image}
+                    onClick={() => this.showModal()}
+                    onLoad={() => this.setImageLoaded(true)}
+                    onError={() => this.setImageFailLoaded(true)}
+                    fluid
+                />
+                <DImageLoading isImageLoaded={this.state.isImageLoaded}/>
                 <div style={styles.textAndButtonDiv}>
                     <text style={styles.imageText}>{this.state.imageShown.name}</text>
-                    {this.debugText()}
                     <DModal showModal={this.state.showModal} hideModal={() => this.hideModal()} imageShown={this.state.imageShown} />
                     <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
                 </div>
