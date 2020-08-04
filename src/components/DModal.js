@@ -12,7 +12,14 @@ function DModal(props) {
             toReturn.push(element.style);
         })
 
-        return (<h3>Catégories : {toReturn.join(" ")}</h3>);
+        return(
+            <div>
+                <h3>Catégories : </h3>
+                {props.imageShown.categories.map((category) =>
+                    <h3>- {category.style}</h3>
+                )}
+            </div>
+        )
     }
 
     return (

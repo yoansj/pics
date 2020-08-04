@@ -150,14 +150,14 @@ class Diaporama extends React.Component {
     render() {
         return (
             <div style={styles.imageDiv}>
-                <Image
-                    src={this.state.imageShown.src}
-                    style={styles.image}
-                    onClick={() => this.showModal()}
-                    onLoad={() => this.setImageLoaded(true)}
-                    onError={() => this.setImageFailLoaded(true)}
-                    fluid
-                />
+                    <Image
+                        src={this.state.imageShown.src}
+                        style={styles.image}
+                        onClick={() => this.showModal()}
+                        onLoad={() => this.setImageLoaded(true)}
+                        onError={() => this.setImageFailLoaded(true)}
+                        fluid
+                    />
                 <DImageLoading isImageLoaded={this.state.isImageLoaded}/>
                 <div style={styles.textAndButtonDiv}>
                     <text style={styles.imageText}>{this.state.imageShown.name}</text>

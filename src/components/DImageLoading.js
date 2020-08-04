@@ -10,7 +10,7 @@ function DImageLoading(props)
             </Spinner>
         );
     } else if (props.isImageLoaded === true)
-        return (<div></div>);
+        return (null);
     else if (props.isImageFailLoaded === true)
         return (<h3>Hey the image failed to load would you refresh that window please ?</h3>);
 }
