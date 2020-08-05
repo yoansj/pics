@@ -4,10 +4,9 @@ import Image from 'react-bootstrap/Image';
 import DPauseButton from './DPauseButton'
 import DModal from './DModal'
 import DImageLoading from './DImageLoading'
-import ImageList from '../images/imageList.js';
 
 
-function getRndInteger(min, max) {
+export function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
@@ -65,7 +64,7 @@ class Diaporama extends React.Component {
     }
 
     getRandomImage() {
-        return (ImageList[getRndInteger(0, ImageList.length - 1)]);
+        return (this.props.imageList[getRndInteger(0, this.props.imageList.length - 1)]);
     }
 
     showModal() {
@@ -116,7 +115,6 @@ class Diaporama extends React.Component {
     nextImage() {
         var newImage = this.getRandomImage();
 
-        console.log(this.state.lastImageShown);
         while (newImage === this.state.imageShown || newImage === this.state.lastImageShown) {
             newImage = this.getRandomImage();
         }
