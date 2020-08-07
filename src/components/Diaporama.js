@@ -114,9 +114,12 @@ class Diaporama extends React.Component {
      */
     nextImage() {
         var newImage = this.getRandomImage();
-
+        var tries = 0;
+        
         while (newImage === this.state.imageShown || newImage === this.state.lastImageShown) {
             newImage = this.getRandomImage();
+            tries++;
+            if (tries >= 5) break;
         }
 
         this.setState((state) => ({
@@ -157,10 +160,12 @@ class Diaporama extends React.Component {
                         fluid
                     />
                 <DImageLoading isImageLoaded={this.state.isImageLoaded}/>
+                <DModal showModal={this.state.showModal} hideModal={() => this.hideModal()} imageShown={this.state.imageShown} />
                 <div style={styles.textAndButtonDiv}>
                     <text style={styles.imageText}>{this.state.imageShown.name}</text>
-                    <DModal showModal={this.state.showModal} hideModal={() => this.hideModal()} imageShown={this.state.imageShown} />
-                    <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
+                    <div>
+                        <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
+                    </div>
                 </div>
             </div>
         );

@@ -1,20 +1,52 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
+import Image from 'react-bootstrap/Image'
+import Fade from 'react-bootstrap/Fade'
+
+import './DPauseButton.css'
 
 function DPauseButton(props)
 {
-    function displayLogic() {
-        if (props.isPaused === true)
-            return (<h1>Continuer</h1>)
-        else
-            return (<h1>Pause</h1>)
+    const [fade, setFade] = useState(true);
+
+    function fadeFunc()
+    {
+        props.onClick();
+        setFade(true);
     }
 
-    return (
-        <Button variant="primary" onClick={() => props.onClick()}>
-            {displayLogic()}
-        </Button>
-    );
+    function toCallOnClick()
+    {
+        setFade(false);
+        setTimeout(() => {fadeFunc()}, 500);
+    }
+
+    if (props.isPaused === true) {
+        return (
+        <div className="mainDiv">
+            <Fade in={fade}>
+                <Image
+                className="image"
+                src={require("../assets/play.png")}
+                onClick={() => toCallOnClick()}
+                title="https://icones8.fr/icons/set/play"
+                />
+            </Fade>
+        </div>
+        );
+    } else {
+        return (
+        <div className="mainDiv">
+            <Fade in={fade}>
+                <Image
+                className="image"
+                src={require("../assets/pause.png")}
+                onClick={() => toCallOnClick()}
+                title="https://icones8.fr/icons/set/pause"
+                />
+            </Fade>
+        </div>
+        );
+    }
 }
 
 export default DPauseButton;

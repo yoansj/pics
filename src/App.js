@@ -3,11 +3,17 @@ import './App.css';
 
 import Settings from './components/Settings'
 
+const styles = {
+    gradient: {
+        width: "100%",
+        background: "linear-gradient(rgba(250,0,0,0.5), transparent)",
+        backgroundColor: "rgba(250,250,0,0.5)",
+    }
+}
 
 function App() {
     return (
-        <div style={{'--color-1': 'deepskyblue', '--color-2': 'navy',
-            background: `linear-gradient(170deg, var(--color-1), var(--color-2) 80%)`}}>
+        <div style={styles.gradient}>
             <Settings />
         </div>
     );

@@ -1,0 +1,14 @@
+.mainDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    transition: width 0.5s ease-in-out;
+    padding-bottom: 2%;
+    width: 64px;
+}
+
+.image:hover {
+    width: 70px;
+}
