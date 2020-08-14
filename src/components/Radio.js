@@ -2,6 +2,9 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Sound from 'react-sound';
 
+import IconButton from '@material-ui/core/IconButton';
+import RadioIcon from '@material-ui/icons/Radio';
+
 import { getRndInteger, getRndFloat } from './Diaporama';
 
 const URL_TO_SOUNDS = "http://github.com/yoansj/pics/raw/master/src/musics/";
@@ -94,7 +97,9 @@ class Radio extends React.Component {
     render() {
         return (
             <div>
-                <Button variant="success" onClick={() => this.radioManager()}>Radio Regular</Button>
+                <IconButton onClick={() => this.radioManager()}>
+                    <RadioIcon style={{color: 'black'}} />
+                </IconButton>
                 <Sound
                     url={this.state.playing}
                     playStatus={this.state.playStatus}
