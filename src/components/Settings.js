@@ -1,10 +1,11 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+import React from 'react'
+import { Button } from 'react-bootstrap'
+import Modal from 'react-bootstrap/Modal'
 import Image from 'react-bootstrap/Image'
 
 import Diaporama, { getRndInteger } from './Diaporama'
-import ImageList from '../images/imageList.js';
+import Radio from './Radio'
+import ImageList from '../images/imageList.js'
 
 class Settings extends React.Component {
     constructor(props) {
@@ -112,6 +113,7 @@ class Settings extends React.Component {
                     </div>
                 </div>
                 <Diaporama imageList={this.state.sortedImageList} />
+                <Radio></Radio>
             </div>
         );
     }

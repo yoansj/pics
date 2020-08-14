@@ -10,6 +10,10 @@ export function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+export function getRndFloat(min, max) {
+    return (Math.random() * (max - min + 1)) + min;
+}
+
 const styles = {
     imageDiv: {
         alignItems: 'center',
@@ -23,17 +27,16 @@ const styles = {
         flexDirection: 'column',
     },
     image: {
-        paddingTop: 20,
         textAlign: 'center',
         alignItems: 'center',
         resizeMode: 'contain',
         maxWidth: "60%",
+        boxShadow: "10px 10px 10px 0px rgba(0,0,0,0.75)",
     },
     imageText: {
-        fontFamily: 'Monsterrat',
+        fontFamily: 'Roboto Mono',
         fontSize: 60,
-        fontWeight: 800,
-        fontStyle: 'italic',
+        fontWeight: 80,
     }
 }
 
@@ -139,6 +142,8 @@ class Diaporama extends React.Component {
      * when the seconds state is equal to the timeSwitch state
      */
     updateTime() {
+
+        if (this.state.isImageLoaded === false) return;
 
         this.setState((state) => ({
             seconds: state.seconds + 1,

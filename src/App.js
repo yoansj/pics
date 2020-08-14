@@ -6,8 +6,8 @@ import Settings from './components/Settings'
 const styles = {
     gradient: {
         width: "100%",
-        background: "linear-gradient(rgba(250,0,0,0.5), transparent)",
-        backgroundColor: "rgba(250,250,0,0.5)",
+        minHeight: "100%",
+        backgroundColor: 'white',
     }
 }
 
