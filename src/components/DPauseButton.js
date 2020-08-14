@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'react-bootstrap/Image'
-import Fade from 'react-bootstrap/Fade'
 
 import IconButton from '@material-ui/core/IconButton';
 import PauseIcon from '@material-ui/icons/Pause';
