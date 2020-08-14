@@ -3,7 +3,18 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
+
 function DModal(props) {
+
+    const styles = {
+        modalText: {
+            fontFamily: 'Roboto Mono',
+            fontSize: 30,
+            fontWeight: 80,
+        }
+    }
 
     function showCategories() {
         var toReturn = [];
@@ -14,9 +25,9 @@ function DModal(props) {
 
         return(
             <div>
-                <h3>Catégories : </h3>
+                <h3 style={styles.modalText}>Catégories : </h3>
                 {props.imageShown.categories.map((category) =>
-                    <h3>- {category.style}</h3>
+                    <h3 style={styles.modalText}>• {category.style}</h3>
                 )}
             </div>
         )
@@ -26,16 +37,13 @@ function DModal(props) {
         <div>
             <Modal show={props.showModal} onHide={props.hideModal} size="xl">
                 <Modal.Header closeButton>
-                    <Modal.Title>{props.imageShown.name}</Modal.Title>
+                        <Modal.Title style={styles.modalText}>{props.imageShown.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Image src={props.imageShown.src} fluid></Image>
-                    {showCategories()}
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" onClick={props.hideModal}>
-                        Fermer
-                    </Button>
+                <Modal.Footer style={{justifyContent: 'flex-start'}}>
+                    {showCategories()}
                 </Modal.Footer>
             </Modal>
         </div>
