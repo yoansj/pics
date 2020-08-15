@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal'
 import Image from 'react-bootstrap/Image'
 
 import Diaporama, { getRndInteger } from './Diaporama'
+import Footer from './Footer'
 import ImageList from '../images/imageList.js'
 
 const styles = {
@@ -132,6 +133,7 @@ class Settings extends React.Component {
                     </div>
                 </div>
                 <Diaporama imageList={this.state.sortedImageList} />
+                <Footer />
             </div>
         );
     }
