@@ -1,14 +1,20 @@
+// import PortraitIcon from '@material-ui/icons/Portrait'; //Portrait
+// import BrokenImageIcon from '@material-ui/icons/BrokenImage'; //Montage
+// import Brightness2Icon from '@material-ui/icons/Brightness2'; //Nuit
+// "https://img.icons8.com/pastel-glyph/64/000000/sneaker--v2.png" Sneakers
+// import ApartmentIcon from '@material-ui/icons/Apartment'; //Architecture
+
 //Liste des images
 
 const Categories = {
     portrait: {name: "portrait", style: "Portrait"},
     montage: {name: "montage", style: "Montage"},
-    paysage: {name: "paysage", style: "Paysage"},
+    paysage: {name: "paysage", style: "Landscape"},
     sneakers: {name: "sneakers", style: "Sneakers"},
     architecture: {name: "architecture", style: "Architecture"},
     lightPainting: {name: "lightPainting", style: "Light Painting"},
-    night: {name: "night", style: "Nuit"},
-    bw: {name: "blackAndWhite", style: "Noir et Blanc"},
+    night: {name: "night", style: "Night"},
+    bw: {name: "blackAndWhite", style: "Black & White"},
 }
 
 // Liste des images

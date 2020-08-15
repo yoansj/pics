@@ -1,11 +1,10 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Sound from 'react-sound';
 
 import IconButton from '@material-ui/core/IconButton';
 import RadioIcon from '@material-ui/icons/Radio';
 
-import { getRndInteger, getRndFloat } from './Diaporama';
+import { getRndInteger } from './Diaporama';
 
 const URL_TO_SOUNDS = "http://github.com/yoansj/pics/raw/master/src/musics/";
 
@@ -45,8 +44,7 @@ class Radio extends React.Component {
         this.setState({pausePosition: soundInfo.position})
     }
 
-    hanleFinish() {
-        alert("End");
+    handleEnd() {
         this.pickNewSound();
     }
 
@@ -98,14 +96,14 @@ class Radio extends React.Component {
         return (
             <div>
                 <IconButton onClick={() => this.radioManager()}>
-                    <RadioIcon style={{color: 'black'}} />
+                    <RadioIcon style={{color: 'black', fontSize: 40}} />
                 </IconButton>
                 <Sound
                     url={this.state.playing}
                     playStatus={this.state.playStatus}
                     playFromPosition={this.state.playFromPosition}
                     onPause={this.handlePause.bind(this)}
-                    onFinishedPlaying={this.hanleFinish.bind(this)}
+                    onFinishedPlaying={this.handleEnd.bind(this)}
                 />
             </div>
         );

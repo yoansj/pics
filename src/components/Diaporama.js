@@ -4,6 +4,7 @@ import Image from 'react-bootstrap/Image';
 import DPauseButton from './DPauseButton'
 import DModal from './DModal'
 import DImageLoading from './DImageLoading'
+import Radio from './Radio'
 
 
 export function getRndInteger(min, max) {
@@ -30,13 +31,14 @@ const styles = {
         textAlign: 'center',
         alignItems: 'center',
         resizeMode: 'contain',
-        maxWidth: "60%",
+        maxWidth: "50%",
         boxShadow: "10px 10px 10px 0px rgba(0,0,0,0.75)",
     },
     imageText: {
         fontFamily: 'Roboto Mono',
         fontSize: 60,
-        fontWeight: 80,
+        fontWeight: 900,
+        textAlign: 'center'
     }
 }
 
@@ -45,7 +47,7 @@ class Diaporama extends React.Component {
         super(props);
         this.state = {
             seconds: 0,
-            timeSwitch: getRndInteger(10, 60),
+            timeSwitch: getRndInteger(20, 45),
             isPaused: false,
             imageShown: this.getRandomImage(),
             lastImageShown: NaN,
@@ -127,7 +129,7 @@ class Diaporama extends React.Component {
 
         this.setState((state) => ({
             seconds: 0,
-            timeSwitch: getRndInteger(10, 60),
+            timeSwitch: getRndInteger(20, 45),
             lastImageShown: state.imageShown,
             imageShown: newImage,
             showModal: false,
@@ -168,8 +170,9 @@ class Diaporama extends React.Component {
                 <DModal showModal={this.state.showModal} hideModal={() => this.hideModal()} imageShown={this.state.imageShown} />
                 <div style={styles.textAndButtonDiv}>
                     <text style={styles.imageText}>{this.state.imageShown.name}</text>
-                    <div>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
                         <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
+                        <Radio />
                     </div>
                 </div>
             </div>

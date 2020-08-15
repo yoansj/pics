@@ -1,10 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-
-import CloseIcon from '@material-ui/icons/Close';
-import IconButton from '@material-ui/core/IconButton';
 
 function DModal(props) {
 
@@ -12,7 +8,7 @@ function DModal(props) {
         modalText: {
             fontFamily: 'Roboto Mono',
             fontSize: 30,
-            fontWeight: 80,
+            fontWeight: 900,
         }
     }
 
@@ -25,7 +21,7 @@ function DModal(props) {
 
         return(
             <div>
-                <h3 style={styles.modalText}>Catégories : </h3>
+                <h3 style={styles.modalText}>Categories : </h3>
                 {props.imageShown.categories.map((category) =>
                     <h3 style={styles.modalText}>• {category.style}</h3>
                 )}

@@ -4,8 +4,6 @@ import IconButton from '@material-ui/core/IconButton';
 import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
-import './DPauseButton.css'
-
 function DPauseButton(props)
 {
     const [fade, setFade] = useState(true);
@@ -24,19 +22,15 @@ function DPauseButton(props)
 
     if (props.isPaused === true) {
         return (
-        <div className="mainDiv">
             <IconButton onClick={() => toCallOnClick()}>
                 <PlayArrowIcon style={{color: 'black', fontSize: 40}} />
             </IconButton>
-        </div>
         );
     } else {
         return (
-        <div className="mainDiv">
             <IconButton onClick={() => toCallOnClick()}>
                 <PauseIcon style={{color: 'black', fontSize: 40}} />
             </IconButton>
-        </div>
         );
     }
 }

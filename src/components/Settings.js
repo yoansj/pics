@@ -4,8 +4,28 @@ import Modal from 'react-bootstrap/Modal'
 import Image from 'react-bootstrap/Image'
 
 import Diaporama, { getRndInteger } from './Diaporama'
-import Radio from './Radio'
 import ImageList from '../images/imageList.js'
+
+const styles = {
+    modalText: {
+        fontFamily: 'Roboto Mono',
+        fontSize: 30,
+        fontWeight: 900,
+    },
+    smallText: {
+        fontFamily: 'Roboto Mono',
+        fontSize: 15,
+        fontWeight: 900,
+        fontStyle: 'italic',
+        textAlign: 'center',
+    },
+    buttonText: {
+        fontFamily: 'Roboto Mono',
+        fontSize: 18,
+        fontWeight: 990,
+        textAlign: 'center',
+    }
+}
 
 class Settings extends React.Component {
     constructor(props) {
@@ -14,12 +34,12 @@ class Settings extends React.Component {
             categories: [
                 ["Portrait", true, 0],
                 ["Montage", true, 1],
-                ["Paysage", true, 2],
+                ["Landscape", true, 2],
                 ["Sneakers", true, 3],
                 ["Architecture", true, 4],
                 ["Light Painting", true, 5],
-                ["Nuit", true, 6],
-                ["Noir et Blanc", true, 7],
+                ["Night", true, 6],
+                ["Black & White", true, 7],
             ],
             isOpen: false,
             sortedImageList: ImageList
@@ -29,18 +49,17 @@ class Settings extends React.Component {
     Categories(props) {
         return (
             <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
-                <h3>Catégories</h3>
-                <h6 style={{fontStyle: "italic", textAlign: "center"}}>Appuyez sur les boutons afin de sélectionner les catégories que vous souhaitez voir</h6>
+                <h3 style={styles.modalText}>Categories</h3>
+                <h6 style={styles.smallText}>Use the buttons to select the categories shown by the diaporama</h6>
                 <Image style={{width: "10px", paddingTop: "3px", paddingBottom: "9px"}} src={require("../assets/dotIcon.png")} title={"https://icones8.fr/icons/set/new-moon"} />
                 {
                     props.parent.state.categories.map((category, index) =>
                         <Button
-                        variant={props.parent.state.categories[index][1] ? "primary" : "secondary"}
+                        variant={props.parent.state.categories[index][1] ? "success" : "secondary"}
                         onClick={() => props.parent.setCategory(index, !props.parent.state.categories[index][1])}
                         block
                         >
-                            {props.parent.state.categories[index][0]}
-                            {props.parent.state.categories[index][1] === true && " ✓"}
+                            <h6 style={styles.buttonText}>{props.parent.state.categories[index][0]}{props.parent.state.categories[index][1] === true && " ✓"}</h6>
                         </Button>
                 )}
             </div>
@@ -104,7 +123,7 @@ class Settings extends React.Component {
                     <div>
                         <Modal show={this.state.isOpen} onHide={() => this.setOpen(false)} size="md">
                             <Modal.Header closeButton>
-                                <Modal.Title>Settings</Modal.Title>
+                                <Modal.Title style={styles.modalText}>Settings</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <this.Categories parent={this}></this.Categories>
@@ -113,7 +132,6 @@ class Settings extends React.Component {
                     </div>
                 </div>
                 <Diaporama imageList={this.state.sortedImageList} />
-                <Radio></Radio>
             </div>
         );
     }
