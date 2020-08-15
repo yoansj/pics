@@ -25,6 +25,7 @@ I really had a lot of issues with the visuals of the app but overall it went wel
 Task | Status
 ---  | ---   |
 Show a loading icon when a image is being shown | :heavy_check_mark: (Working with some slight issues)
+Add a proper transition between two images | :x:
 Prevent the app to show the same image twice in a row or to show the previous image | :heavy_check_mark:
 Make the modal when you click an image actually bigger | :heavy_check_mark:
 Have a nice display for images categories | :heavy_check_mark:
