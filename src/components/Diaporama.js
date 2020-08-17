@@ -6,6 +6,10 @@ import DModal from './DModal'
 import DImageLoading from './DImageLoading'
 import Radio from './Radio'
 
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
 
 export function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -50,7 +54,7 @@ class Diaporama extends React.Component {
             timeSwitch: getRndInteger(20, 45),
             isPaused: false,
             imageShown: this.getRandomImage(),
-            lastImageShown: NaN,
+            lastImageShown: null,
             showModal: false,
             isImageLoaded: false,
             isImageFailLoaded: false
@@ -155,6 +159,46 @@ class Diaporama extends React.Component {
             this.nextImage();
     }
 
+    setPreviousImage() {
+        this.setState((state) => ({
+            imageShown: state.lastImageShown,
+            seconds: 0,
+            timeSwitch: getRndInteger(20, 45),
+            lastImageShown: state.imageShown,
+            showModal: false,
+            isImageLoaded: false,
+            isImageFailLoaded: false
+        }));
+    }
+
+    PreviousButton() {
+        return (
+            <div>
+            {this.state.lastImageShown === null ?
+                <IconButton disabled >
+                    <SkipPreviousIcon style={{fontSize: 40}} />
+                </IconButton>
+                :
+                <Tooltip title="Previous image" arrow disableFocusListener >
+                    <IconButton onClick={() => this.setPreviousImage()} >
+                    <SkipPreviousIcon style={{color: 'black', fontSize: 40}} />
+                    </IconButton>
+                </Tooltip>
+            }
+            </div>
+        );
+    }
+
+    NextButton() {
+        return (
+            <Tooltip title="Next image" arrow disableFocusListener >
+                <IconButton onClick={() => this.nextImage()} >
+                <SkipNextIcon style={{color: 'black', fontSize: 40}} />
+                </IconButton>
+            </Tooltip>
+        );
+    }
+
     render() {
         return (
             <div style={styles.imageDiv}>
@@ -171,7 +215,9 @@ class Diaporama extends React.Component {
                 <div style={styles.textAndButtonDiv}>
                     <text style={styles.imageText}>{this.state.imageShown.name}</text>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
+                        {this.PreviousButton()}
                         <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
+                        {this.NextButton()}
                         <Radio />
                     </div>
                 </div>

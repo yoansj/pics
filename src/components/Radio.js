@@ -1,6 +1,7 @@
 import React from 'react';
 import Sound from 'react-sound';
 
+import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import RadioIcon from '@material-ui/icons/Radio';
 
@@ -9,16 +10,6 @@ import { getRndInteger } from './Diaporama';
 const URL_TO_SOUNDS = "http://github.com/yoansj/pics/raw/master/src/musics/";
 
 class Radio extends React.Component {
-
-    //Idée
-    // Quand l'utilisateur allume la radio pour la première fois
-    // la radio joue un son random à un moment random
-    // Une fois que la radio est allumée un compteur prend en compte les secondes passées
-    // par exemple si l'utilisateur éteint la radio puis la rallume 10s plus tard le son joué
-    // sera le son joué il y a 10s avancé de 10s
-    // Parfois à la fin d'une musique un son de transition sera joué
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -83,7 +74,6 @@ class Radio extends React.Component {
                     miliSecSincePause: 0
                 }));
                 this.setState({playFromPosition: null});
-                //Jouer la musique en prenant en compte le décalage
             }
 
         } else {
@@ -95,9 +85,11 @@ class Radio extends React.Component {
     render() {
         return (
             <div>
-                <IconButton onClick={() => this.radioManager()}>
-                    <RadioIcon style={{color: 'black', fontSize: 40}} />
-                </IconButton>
+                <Tooltip title={this.state.isOn ? "Turn off the radio" : "Turn on the radio"} arrow disableFocusListener >
+                    <IconButton onClick={() => this.radioManager()}>
+                        <RadioIcon style={{color: 'black', fontSize: 40}} />
+                    </IconButton>
+                </Tooltip>
                 <Sound
                     url={this.state.playing}
                     playStatus={this.state.playStatus}

@@ -17,7 +17,6 @@ const styles = {
         fontFamily: 'Roboto Mono',
         fontSize: 15,
         fontWeight: 900,
-        fontStyle: 'italic',
         textAlign: 'center',
     },
     buttonText: {
@@ -50,6 +49,10 @@ class Settings extends React.Component {
     Categories(props) {
         return (
             <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+                <h3 style={styles.modalText}>What is this website ?</h3>
+                <h6 style={styles.smallText}>Pics is an interactive Diaporama that showcases basic React functionnalities.</h6>
+                <h6 style={styles.smallText}>See the footer for more info about the creator and the pictures that are being shown. </h6>
+                <Image style={{width: "10px", paddingTop: "3px", paddingBottom: "9px"}} src={require("../assets/dotIcon.png")} title={"https://icones8.fr/icons/set/new-moon"} />
                 <h3 style={styles.modalText}>Categories</h3>
                 <h6 style={styles.smallText}>Use the buttons to select the categories shown by the diaporama</h6>
                 <Image style={{width: "10px", paddingTop: "3px", paddingBottom: "9px"}} src={require("../assets/dotIcon.png")} title={"https://icones8.fr/icons/set/new-moon"} />
