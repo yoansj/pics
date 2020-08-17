@@ -32,9 +32,19 @@ const ImageList = [
     {name: "Pink Sunset", src: "https://i.ibb.co/y6KnZfY/IMG-3878.jpg", categories: [Categories.paysage]},
     {name: "Red and White", src: "https://i.ibb.co/YpMytxS/light-painting.jpg", categories: [Categories.lightPainting, Categories.night]},
     {name: "City", src: "https://i.ibb.co/ysVHMvJ/city.jpg", categories: [Categories.night]},
-    {name: "Shades of Grey", src: "https://i.ibb.co/C57Fms3/b-w.jpg", categories: [Categories.bw, Categories.paysage]},
+    {name: "Shades of Grey", src: "https://i.ibb.co/C57Fms3/b-w.jpg", categories: [Categories.bw, Categories.paysage, Categories.portrait]},
     {name: "Blue Metro", src: "https://i.ibb.co/gT3sKPg/blue.jpg", categories: [Categories.night, Categories.architecture]},
     {name: "The blocks", src: "https://i.ibb.co/Y0hFft2/another-blockview.jpg", categories: [Categories.architecture]},
+    {name: "Free smoke", src: "https://i.ibb.co/tXZQcjk/free-smoke.jpg", categories: [Categories.night]},
+    {name: "Blockview", src: "https://i.ibb.co/qr6NB0c/da-block.jpg", categories: [Categories.architecture]},
+    {name: "Haxo", src: "https://i.ibb.co/9YVQv5F/haxo.jpg", categories: [Categories.architecture, Categories.night]},
+    {name: "In the dark", src: "https://i.ibb.co/mHpjhtq/lamp.jpg", categories: [Categories.architecture, Categories.night, Categories.bw]},
+    {name: "New York", src: "https://i.ibb.co/v3Gx3d4/newyork.jpg", categories: [Categories.architecture, Categories.portrait]},
+    {name: "Two blocks", src: "https://i.ibb.co/x8z06xm/the-final-blockview.jpg", categories: [Categories.architecture,]},
+    {name: "Tramway", src: "https://i.ibb.co/6vWYdPQ/tramwaayy.jpg", categories: [Categories.night,]},
+    {name: "A View", src: "https://i.ibb.co/Kqs5J8r/view.jpg", categories: [Categories.architecture,]},
+    {name: "Bars", src: "https://i.ibb.co/SNnCmkw/bars.jpg", categories: [Categories.architecture, Categories.bw]},
+    {name: "Bleu et Beige", src: "https://i.ibb.co/nrztJvP/bleuetbeige.jpg", categories: [Categories.architecture,]},
 ]
 
 export default ImageList;
