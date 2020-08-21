@@ -38,4 +38,5 @@ Add more musics to the Radio | :heavy_check_mark:
 Create a proper icon logo instead of the default React logo | :x:
 Add a proper transition between two images (and remove the spring) | :x:
 Add a visit tracker and display the result on the page | :x:
+Add a volume setting for the radio | :x:
 
