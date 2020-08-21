@@ -32,9 +32,10 @@ Add a menu to choose the categories of images that will be shown | :heavy_check_
 Add the radio feature | :heavy_check_mark: (Missing features)
 Prevent the chrono from playing when the image is not loaded | :heavy_check_mark:
 Add a Next and Previous Button | :heavy_check_mark:
+Add informations in the menu | :heavy_check_mark:
+Pause the Diaporama when the user has clicked on the Image | :heavy_check_mark:
+Add more musics to the Radio | :heavy_check_mark:
 Create a proper icon logo instead of the default React logo | :x:
 Add a proper transition between two images (and remove the spring) | :x:
 Add a visit tracker and display the result on the page | :x:
-Add informations in the menu | :x:
-Pause the Diaporama when the user has clicked on the Image | :x:
-Add more musics to the Radio | :x:
+
