@@ -13,7 +13,7 @@ class Radio extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            playlist: ["dance.mp3", "portugal.mp3"],
+            playlist: ["dance.mp3", "portugal.mp3", "20min.mp3", "controlla.mp3", "pressGarden.mp3", "thatWay.mp3"],
             transitions: [],
             playStatus: Sound.status.PLAYING,
             playFromPosition: null,

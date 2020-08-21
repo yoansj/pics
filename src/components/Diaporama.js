@@ -78,14 +78,20 @@ class Diaporama extends React.Component {
 
     showModal() {
         this.setState({
-            showModal: true
+            showModal: true,
         });
+
+        if (!this.state.isPaused)
+            this.pauseDiaporama();
     }
 
     hideModal() {
         this.setState({
-            showModal: false
+            showModal: false,
         });
+
+        if (this.state.isPaused)
+            this.pauseDiaporama();
     }
 
     setImageLoaded(bool) {

@@ -12,6 +12,7 @@ const styles = {
         fontFamily: 'Roboto Mono',
         fontSize: 30,
         fontWeight: 900,
+        textAlign: 'center',
     },
     smallText: {
         fontFamily: 'Roboto Mono',
@@ -54,7 +55,7 @@ class Settings extends React.Component {
                 <h6 style={styles.smallText}>See the footer for more info about the creator and the pictures that are being shown. </h6>
                 <Image style={{width: "10px", paddingTop: "3px", paddingBottom: "9px"}} src={require("../assets/dotIcon.png")} title={"https://icones8.fr/icons/set/new-moon"} />
                 <h3 style={styles.modalText}>Categories</h3>
-                <h6 style={styles.smallText}>Use the buttons to select the categories shown by the diaporama</h6>
+                <h6 style={styles.smallText}>Use the buttons to select the categories shown by the diaporama. Click on the image to show its categories</h6>
                 <Image style={{width: "10px", paddingTop: "3px", paddingBottom: "9px"}} src={require("../assets/dotIcon.png")} title={"https://icones8.fr/icons/set/new-moon"} />
                 {
                     props.parent.state.categories.map((category, index) =>
