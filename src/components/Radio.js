@@ -96,6 +96,7 @@ class Radio extends React.Component {
                     playFromPosition={this.state.playFromPosition}
                     onPause={this.handlePause.bind(this)}
                     onFinishedPlaying={this.handleEnd.bind(this)}
+                    volume={50}
                 />
             </div>
         );

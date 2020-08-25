@@ -6,6 +6,8 @@ import Image from 'react-bootstrap/Image'
 import Diaporama, { getRndInteger } from './Diaporama'
 import Footer from './Footer'
 import ImageList from '../images/imageList.js'
+import Views from './Views'
+
 
 const styles = {
     modalText: {
@@ -46,6 +48,7 @@ class Settings extends React.Component {
             sortedImageList: ImageList
         }
     }
+    
 
     Categories(props) {
         return (
@@ -125,17 +128,16 @@ class Settings extends React.Component {
             <div>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                     <Image src={require("../assets/menuIcon.png")} onClick={() => this.setOpen(true)}/>
-                    <div>
-                        <Modal show={this.state.isOpen} onHide={() => this.setOpen(false)} size="md">
-                            <Modal.Header closeButton>
-                                <Modal.Title style={styles.modalText}>Settings</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <this.Categories parent={this}></this.Categories>
-                            </Modal.Body>
-                        </Modal>
-                    </div>
+                    <Modal show={this.state.isOpen} onHide={() => this.setOpen(false)} size="md">
+                        <Modal.Header closeButton>
+                            <Modal.Title style={styles.modalText}>Settings</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <this.Categories parent={this}></this.Categories>
+                        </Modal.Body>
+                    </Modal>
                 </div>
+                <Views />
                 <Diaporama imageList={this.state.sortedImageList} />
                 <Footer />
             </div>
