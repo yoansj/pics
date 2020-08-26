@@ -19,6 +19,8 @@ function DPauseButton(props)
     {
         setFade(false);
         setTimeout(() => {fadeFunc()}, 400);
+        if (fade)
+            return;
     }
 
     if (props.isPaused === true) {
