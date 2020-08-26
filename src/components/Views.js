@@ -9,6 +9,18 @@ import firebase from 'firebase'
 import database from '../firebase.js'
 import { v4 as uuidv4 } from 'uuid';
 
+const styles = {
+    viewsText: {
+        fontFamily: 'Roboto Mono',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        paddingRight: 16
+    }
+}
+
 class Views extends React.Component {
 
     constructor() {
@@ -17,6 +29,7 @@ class Views extends React.Component {
             showWelcome: false,
             showGreen: false,
             views: 69,
+            welcomeText: "Welcome to pics :)"
         }
     }
 
@@ -41,19 +54,24 @@ class Views extends React.Component {
     componentWillMount() {
         this.checkVisitor();
         database.collection("views").doc("views").onSnapshot(function(doc) {
-            this.setState({views: doc.data().views});
+            this.setState({views: doc.data().views, showWelcome: false, welcomeText: "A new viewer joined pics :)"});
         }.bind(this))
     }
 
     render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'flex-end', paddingRight: 10}}>
-                <Tooltip title={"Pics currently has " + this.state.views + " unique viewers thanks :)"} arrow disableFocusListener >
-                    <VisibilityIcon style={{fontSize: 30, color: this.getColor()}} />
-                </Tooltip>
-                <Snackbar open={this.state.showWelcome} onClose={() => this.setState({showWelcome: false})} autoHideDuration={5000}>
-                    <MuiAlert variant="filled" onClose={() => this.setState({showWelcome: false})} severity="success">Welcome new viewer :)</MuiAlert>
-                </Snackbar>
+            <div>
+                <div style={{display: 'flex', justifyContent: 'flex-end', paddingRight: 10}}>
+                    <Tooltip title={"Pics currently has " + this.state.views + " unique viewers thanks :)"} arrow disableFocusListener >
+                        <VisibilityIcon style={{fontSize: 30, color: this.getColor()}} />
+                    </Tooltip>
+                    <Snackbar open={this.state.showWelcome} onClose={() => this.setState({showWelcome: false})} autoHideDuration={5000}>
+                        <MuiAlert variant="filled" onClose={() => this.setState({showWelcome: false})} severity="success">{this.state.welcomeText}</MuiAlert>
+                    </Snackbar>
+                </div>
+                <div>
+                    <h6 style={styles.viewsText}>{this.state.views}</h6>
+                </div>
             </div>
         )
     }
