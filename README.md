@@ -36,7 +36,7 @@ Add informations in the menu | :heavy_check_mark:
 Pause the Diaporama when the user has clicked on the Image | :heavy_check_mark:
 Add more musics to the Radio | :heavy_check_mark:
 Add a visit tracker and display the result on the page | :heavy_check_mark:
-Create a proper icon logo instead of the default React logo | :x:
+Create a proper icon logo instead of the default React logo | :heavy_check_mark:
 Add a proper transition between two images (and remove the spring) | :x:
 Add a volume setting for the radio | :x:
 
