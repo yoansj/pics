@@ -8,7 +8,9 @@ function Footer() {
             display: 'flex',
             backgroundColor: 'black',
             position: 'absolute',
-            bottom: 0,
+            bottom: -25,
+            left: 0,
+            right: 0,
             justifyContent: 'center',
             alignItems: 'center'
         },
