@@ -224,7 +224,7 @@ class Diaporama extends React.Component {
                         {this.PreviousButton()}
                         <DPauseButton onClick={() => this.pauseDiaporama()} isPaused={this.state.isPaused}></DPauseButton>
                         {this.NextButton()}
-                        <Radio />
+                        <Radio radioVolume={this.props.radioVolume} />
                     </div>
                 </div>
             </div>

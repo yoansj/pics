@@ -3,6 +3,10 @@ import { Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Image from 'react-bootstrap/Image'
 
+import { withStyles } from '@material-ui/core/styles';
+
+import Slider from '@material-ui/core/Slider';
+
 import Diaporama, { getRndInteger } from './Diaporama'
 import ImageList from '../images/imageList.js'
 import Views from './Views'
@@ -29,6 +33,29 @@ const styles = {
     }
 }
 
+const VolumeSlider = withStyles({
+    root: {
+        color: '#52af77',
+    },
+    thumb: {
+        backgroundColor: '#fff',
+        border: '2px solid currentColor',
+        '&:focus, &:hover, &$active': {
+        boxShadow: 'inherit',
+    },
+    },
+    active: {},
+    valueLabel: {
+        left: 'calc(-50% + 4px)',
+    },
+    track: {
+        borderRadius: 4,
+    },
+    rail: {
+        borderRadius: 4,
+    },
+})(Slider);
+
 class Settings extends React.Component {
     constructor(props) {
         super(props);
@@ -44,7 +71,8 @@ class Settings extends React.Component {
                 ["Black & White", true, 7],
             ],
             isOpen: false,
-            sortedImageList: ImageList
+            sortedImageList: ImageList,
+            volume: 50
         }
     }
     
@@ -133,11 +161,21 @@ class Settings extends React.Component {
                         </Modal.Header>
                         <Modal.Body>
                             <this.Categories parent={this}></this.Categories>
+                            <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+                                <Image style={{width: "10px", paddingTop: "9px", paddingBottom: "9px"}} src={require("../assets/dotIcon.png")} title={"https://icones8.fr/icons/set/new-moon"} />
+                                <h3 style={styles.modalText}>Radio volume</h3>
+                                <VolumeSlider
+                                    defaultValue={this.state.volume}
+                                    min={0}
+                                    max={100}
+                                    onChange={(event, value) => this.setState({volume: value})}
+                                />
+                            </div>
                         </Modal.Body>
                     </Modal>
                 </div>
                 <Views />
-                <Diaporama imageList={this.state.sortedImageList} />
+                <Diaporama radioVolume={this.state.volume} imageList={this.state.sortedImageList} />
             </div>
         );
     }
