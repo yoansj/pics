@@ -210,7 +210,7 @@ class Diaporama extends React.Component {
             <div style={styles.imageDiv}>
                     <Image
                         src={this.state.imageShown.src}
-                        style={styles.image}
+                        style={{...styles.image, visibility: (this.state.isImageLoaded === false) ? 'hidden' : 'visible'}}
                         onClick={() => this.showModal()}
                         onLoad={() => this.setImageLoaded(true)}
                         onError={() => this.setImageFailLoaded(true)}
